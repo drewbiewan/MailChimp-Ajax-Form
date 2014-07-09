@@ -1,0 +1,13 @@
+body {
+	font-family: Helvetica;
+	background: #efefef;
+}
+
+h2 {
+	font-weight: lighter;
+}
+
+#container {
+	max-width: 1170px;
+	margin: 0 auto;
+}

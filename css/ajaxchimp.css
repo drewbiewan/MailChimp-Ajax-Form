@@ -1,0 +1,44 @@
+form {
+	width: 40%;
+	padding: 40px;
+	background: #fff;
+}
+
+form button {
+	border: none;
+	background: #6DC5DC;
+	outline: none;
+	color: #fff;
+	padding: 10px 20px;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	font-size: 2em;
+
+}
+
+form label {
+	display: block;
+	font-weight: bold;
+	margin: 20px 0 10px;
+}
+
+form input[type="text"], form input[type="email"] {
+	border: none;
+	outline: none;
+	box-shadow: none;
+	background: #efefef;
+	width: 100%;
+	padding: 10px 15px;
+	font-size: 1.2em;
+	box-sizing: border-box;
+	font-weight: lighter;
+}
+
+form #mce-responses {
+	background: #efefef;
+	border: 1px solid #ccc;
+	margin: 20px 0;
+	padding: 40px;
+	display: none;
+}

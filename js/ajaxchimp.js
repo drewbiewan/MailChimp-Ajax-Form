@@ -30,22 +30,11 @@
 		
 			e.preventDefault();
 			
-			var emailInput = $('input[type=email]', chimpform).val();
-			var textInput = $('input[type=text]', chimpform).val();
 
 			
-			if(emailInput == '') {
-				
-				alert('email empty');
-					
-			} else {		
-
-				
-				$(buttonInput).html('<i class="fa-spinner fa-spin fa"></i>');
+			$(buttonInput).css('background-color', '#B1E0EC').html('<i class="fa-spinner fa-spin fa"></i>');
 			
-				register(chimpform); //Send it to process!
-			
-			}
+			register(chimpform); //Send it to process!
 			
 		});
     	
@@ -53,36 +42,43 @@
     	function register(chimpform){
     		
     		$.ajax({
-	    		type : chimpform.attr('method'),
-	    		url	: chimpform.attr('action'),
-	    		data : chimpform.serialize(),
-	    		cache : false,
+	    		type 		: chimpform.attr('method'),
+	    		url			: chimpform.attr('action'),
+	    		data 		: chimpform.serialize(),
+	    		cache 		: false,
 				dataType	: 'jsonp',
 				contentType	: "application/json; charset=utf-8",
-				error       : function(err) { 
-			 	$('#mc-embedded-subscribe-form').hide();
-				$('#notification_container').show().html('<span class="alert">Something went wrong. Please try again later.</span><a href="#" id="dismisserr"><i class="fa fa-times"></i> Close</a><div style="clear: both;"></div>');
-				$('#dismisserr').click(function(){
-					$('#notification_container').hide();
-					$('#mc-embedded-subscribe-form').show();
-					$('#mc-embedded-subscribe').html('<i class="fa fa-times"></i>');
-					return false;
-				});
-			},
+				error       : function(data,textStaus) { 
+					var message = data.msg;
+					$('.mce-error-response').show().html(message);
+					$(buttonInput).css('background-color', '#EE836E').html('<i class="fa fa-times"></i>');
+					$('#mce-responses').show().html('Looks like something went wrong. Try Again.');
+			        $('input', chimpform).click(function(){
+				        $(buttonInput).css('background-color', '#6DC5DC').html('<i class="fa fa-envelope"></i>');
+			        });
+			        			
+				},
 				success     : function(data) {
-		      if (data.result != "success") {
-		        var message = data.msg.substring(4);
-		        $(chimpform).fadeOut();
-		        $('#notification_container').show().html('<span class="alert">'+message+'</span>');
-		        
-		      } 
-		 
-		      else {
-		        var message = data.msg;
-		        $('#mc-embedded-subscribe-form').fadeOut();
-		        $('#notification_container').show().html('<span class="success">'+message+'</span>');
-		      }			
-			}
+			     	
+			     	if (data.result != "success") {
+			        	var message = data.msg.substring(4);
+						$(buttonInput).css('background-color', '#EE836E').html('<i class="fa fa-times"></i>');
+						$('#mce-responses').show().html(message);
+			      } 
+			 
+			      else {
+			        var message = data.msg;
+						$(buttonInput).css('background-color', '#95D1C4').html('<i class="fa fa-check"></i>');
+			        	$('#mce-responses').show().html(message);
+			        	$(':input','#life_contact')
+						.not(':button, :submit, :reset, :hidden')
+						.val('')
+						.removeAttr('checked')
+						.removeAttr('selected')
+
+			      }			
+				}									
+
 									    		
     		});
     		

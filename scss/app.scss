@@ -38,3 +38,61 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
+
+body {
+	background: #f2f2f2;
+}
+
+#header {
+	background: url(../img/chimp.gif) center left no-repeat #EE836E; 
+	height: 500px; 
+	color: #fff;
+}
+
+#form-container {
+	background:#fff; 
+	padding: 40px; 
+	box-shadow: 0 0 3px rgba(0,0,0,0.2);	
+}
+
+form {
+
+	button {
+		border: none;
+		background: #6DC5DC;
+		outline: none;
+		color: #fff;
+		padding: 10px 20px;
+		text-align: center;
+		cursor: pointer;
+		width: 100%;
+		font-size: 2em;
+	}
+	
+	label {
+		display: block;
+		font-weight: bold;
+		margin: 20px 0 10px;		
+	}
+	
+	input[type="text"], input[type="email"] {
+		border: none;
+		outline: none;
+		box-shadow: none;
+		background: #efefef;
+		width: 100%;
+		padding: 10px 15px;
+		font-size: 1.2em;
+		box-sizing: border-box;
+		font-weight: lighter;
+	}	
+
+	#mce-responses {
+		background: #efefef;
+		border: 1px solid #ccc;
+		margin: 20px 0;
+		padding: 40px;
+		display: none;
+	}	
+	
+}
